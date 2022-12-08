@@ -9,6 +9,10 @@ body,html {
   color: white;
   background-color: rgb(10, 25, 41);
   background-color: rgb(1, 15, 30);
+  overflow-x:hidden;
+}
+html::-webkit-scrollbar{
+  display: none;
 }
 .root{
   display: flex;
@@ -19,6 +23,7 @@ body,html {
   max-width: 100%;
 
 }
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -123,4 +128,38 @@ form{
   justify-content: center;
   flex-direction: column;
   padding:5px;
+}
+.camera-icon{
+  color:red;
+  margin-right: 5px;
+  align-items: center;
+  justify-content: center;
+  font-size: large;
+  margin-bottom: 5px;
+}
+.app-title{
+  color: red;
+}
+.card{
+  display: flex;
+  flex-direction: row;
+  background-color: inherit;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  padding: 20px;
+}
+.card::-webkit-scrollbar{
+  display: none;
+}
+.card-poster{
+  object-fit: contain;
+  width: 150;
+  max-height: 200px;
+  transition: transform 450ms;
+  margin-right:5px
+}
+.card-poster:hover{
+  transform: scale(1.08);
+  opacity: 1;
+  cursor: pointer;
 }

@@ -3,6 +3,12 @@ import jwt from 'jwt-decode'
 import {useHistory} from 'react-router-dom'
 import NavBarIn from '../components/NavBarIn'
 import MainContext from '../context/MainContext'
+import Row from '../components/Row'
+import requests from '../requests'
+
+
+
+  
 
 
 function Home() {
@@ -19,7 +25,6 @@ useEffect( ()=>{
             history.replace('/login')
         }
         else{
-            //setUser(user)
             setUserState(user)
            
         }
@@ -39,8 +44,17 @@ useEffect(()=>{
     <NavBarIn/>
     
     <div>
-        <h1>Movie Recommendation app</h1>
+        <Row title="Trending Now" fetchUrl={requests.trending}/>
+        <Row title="Netflix Originals" fetchUrl={requests.netflixOriginals}/>
+        <Row title="Action Movies" fetchUrl={requests.actionMovies}/>
+        <Row title="Comedy Movies" fetchUrl={requests.comedyMovies}/>
+        <Row title="Horror Movies" fetchUrl={requests.horrorMovies}/>
+        <Row title="Top Rated Movies" fetchUrl={requests.topRated}/>
+        <Row title="Documentaries" fetchUrl={requests.docuMovies}/>
+        <Row title="Romantic Movies" fetchUrl={requests.romanticMovies}/>
+    
      </div>
+     
      </>
   )
 }
