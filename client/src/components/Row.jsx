@@ -28,9 +28,9 @@ function Row({title,fetchUrl}){
 
     }
     const handleClick=(movie)=>{
-        setTrailerUrl("");
+       
         if(trailerUrl && currentMovie.id==movie.id ){
-               
+            setTrailerUrl("");   
         }
         else{
 

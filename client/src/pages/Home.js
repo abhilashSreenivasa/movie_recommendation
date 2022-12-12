@@ -7,10 +7,6 @@ import Row from '../components/Row'
 import requests from '../requests'
 
 
-
-  
-
-
 function Home() {
     const history=useHistory()	
     const {userState,setUserState}=useContext(MainContext)
@@ -45,7 +41,6 @@ useEffect(()=>{
     
     <div>
         <Row title="Trending Now" fetchUrl={requests.trending}/>
-        <Row title="Netflix Originals" fetchUrl={requests.netflixOriginals}/>
         <Row title="Action Movies" fetchUrl={requests.actionMovies}/>
         <Row title="Comedy Movies" fetchUrl={requests.comedyMovies}/>
         <Row title="Horror Movies" fetchUrl={requests.horrorMovies}/>

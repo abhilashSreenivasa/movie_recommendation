@@ -10,7 +10,7 @@ import { BsFillCameraReelsFill } from "react-icons/bs";
 
 function NavBarIn() {
     const history=useHistory()
-    const {setUserState}=useContext(MainContext)	
+    const {userState,setUserState}=useContext(MainContext)	
   return (
     <>
     
@@ -21,16 +21,18 @@ function NavBarIn() {
           
           <Nav className="me-auto">
             <Nav.Link as={Link} to="/home" >home</Nav.Link>
+            <Nav.Link as={Link} to="/suggestion" >suggestion</Nav.Link>
+            <Nav.Link as={Link} to="/top250" >top 250</Nav.Link>
             <Nav.Link as={Link} to="/about" >About</Nav.Link>
 
             <Button variant="danger" onClick={()=>{
                     localStorage.removeItem('token');
                     localStorage.removeItem('uid');
-                    localStorage.removeItem('inventory');
                     history.push('/login')
             }}>Logout</Button>{' '}           
 
           </Nav>
+          <div className="nav-welcome">Welcome {userState.name}</div>
         </Container>
       </Navbar>
     </>

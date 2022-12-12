@@ -163,3 +163,73 @@ form{
   opacity: 1;
   cursor: pointer;
 }
+
+.card-large-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: inherit;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  padding: 30px;
+}
+.card-large-container::-webkit-scrollbar{
+  display: none;
+}
+.card-poster-large{
+  object-fit: contain;
+  width: 50%;
+  max-height: 500px;
+  transition: transform 450ms;
+}
+.card-poster-large:hover{
+  transform: scale(1.1);
+  opacity: 1;
+  cursor: pointer;
+}
+.card-large{
+  display: flex;
+  flex-direction: row;
+  width: 60%;
+}
+
+.nav-welcome{
+  font-size:25px;
+  color:red;
+}
+
+.card-movie-info{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding:25px;
+  border:1px solid white;
+  background: linear-gradient(to left, rgb(1, 15, 30), #333 50%, rgb(46, 46, 46) 75%, rgb(1, 15, 30));
+}
+.movie-title{
+  font-size:25px;
+  margin-bottom: 10px;
+  color:red;
+}
+.movie-reload-btn{
+  color:yellow;
+}
+.movie-reload-btn:hover{
+  color:rgb(10, 219, 24);
+  cursor: pointer;
+}
+.movie-desc{
+  margin-bottom: 10px;
+}
+.movie-date{
+  margin-bottom: 5px;
+}
+.movie-text{
+  color:red;
+}
+.movie-select-input{
+  margin-left: 25px;
+
+}

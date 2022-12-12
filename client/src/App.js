@@ -4,6 +4,7 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import Home from './pages/Home'
 import about from './pages/about'
+import Suggestion from './pages/Suggestion'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -31,8 +32,8 @@ function App() {
          <Route path="/register" exact component={Register}/>
          <MainContextProvider>
            <Route path="/home" exact component={Home}/>
-         
-         <Route path="/about" exact component={about}/>
+           <Route path="/suggestion" exact component={Suggestion}/>
+           <Route path="/about" exact component={about}/>
          <Redirect from="*" to="/login" />
 
     
