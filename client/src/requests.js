@@ -1,4 +1,4 @@
-const APIKEY="b4d6ba01099d88e9c7e1d9f4609fe685";
+export const APIKEY="b4d6ba01099d88e9c7e1d9f4609fe685";
 
 const requests={
     trending:`https://api.themoviedb.org/3/trending/all/week?api_key=${APIKEY}&language=en-US`,
