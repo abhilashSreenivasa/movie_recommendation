@@ -74,22 +74,22 @@ app.get('/api/data/:uname',async(req,res)=>{
 
 
 
-app.post('/api/add/:uname',verifyjwt, async (req,res)=>{
+app.post('/api/add/:uname/:num',verifyjwt, async (req,res)=>{
     
     const newInvent= await User.find({name:req.params.uname})
-    const newInventory={
-        
-        inventory_name: req.body.name,
+    const newItem={
+        mid: req.body.mid,
+        title: req.body.title,
         desc:   req.body.desc,
-        date:   new Date(req.body.date),
-        approx_val: parseInt(req.body.val),
-        insurance_val:  parseInt(req.body.ival),
-        photo:  req.body.photo
+        date:   req.body.date,
+        rating: req.body.rating,
+        imageURL:  req.body.imageURL
     }
   try{
+    if(req.params.num==1 || req.params.num=='1'){
     User.findOneAndUpdate(
         { _id: newInvent[0]._id.toString() }, 
-        { $push: { inventory: newInventory  } },
+        { $push: { favourites: newItem  } },
        async function (error, success) {
              if (error) {
                 console.log(error)
@@ -98,23 +98,39 @@ app.post('/api/add/:uname',verifyjwt, async (req,res)=>{
                  res.status(201);
              }
          });
+     }
+     else{
+        User.findOneAndUpdate(
+            { _id: newInvent[0]._id.toString() }, 
+            { $push: { watchLater: newItem  } },
+           async function (error, success) {
+                 if (error) {
+                    console.log(error)
+                     res.status(500);
+                 } else {
+                     res.status(201);
+                 }
+             });
+        
+     }
     }
     catch(err){
         console.log(err)
     }
     res.sendStatus(201)
+    
      
 })
 
 
 
 
-app.post('/api/delete/:uname/:id',verifyjwt, async(req,res)=>{
-    console.log("params"+req.params.uname +" "+req.params.id);
+app.post('/api/delete/:uname/:mid',verifyjwt, async(req,res)=>{
     try{
+        console.log(req.params.mid)
     await User.updateOne({ name: req.params.uname }, {
         $pull: {
-            inventory: {_id:req.params.id},
+            favourites: {mid:req.params.mid},
         },
         async function(err,found){
             if(err){
@@ -122,16 +138,13 @@ app.post('/api/delete/:uname/:id',verifyjwt, async(req,res)=>{
             }
         }
     });
- 
-  
    }
    catch(err){
     console.log(err)
     res.status(500)
    }
    const user=await User.find({name: req.params.uname.toString()})
-   console.log(user.inventory)
-   res.status(201).json({inventory:user[0].inventory})
+   res.status(201).json({favourites:user[0].favourites})
         
 })
 

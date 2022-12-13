@@ -17,13 +17,14 @@ function NavBarIn() {
      <Navbar style={{backgroundColor:'rgb(1, 15, 30)'}} variant="dark">
         <Container>
           <div className='camera-icon'><BsFillCameraReelsFill /> </div>
-          <Navbar.Brand href="#home"><div className='app-title'>WatchTime</div></Navbar.Brand> 
+          <Navbar.Brand href=""><div className='app-title'>WatchTime</div></Navbar.Brand> 
           
           <Nav className="me-auto">
             <Nav.Link as={Link} to="/home" >home</Nav.Link>
             <Nav.Link as={Link} to="/suggestion" >suggestion</Nav.Link>
             <Nav.Link as={Link} to="/search" >search</Nav.Link>
-            <Nav.Link as={Link} to="/about" >About</Nav.Link>
+            <Nav.Link as={Link} to="/favourites">favourites</Nav.Link>
+            <Nav.Link as={Link} to="/about" >about</Nav.Link>
 
             <Button variant="danger" onClick={()=>{
                     localStorage.removeItem('token');

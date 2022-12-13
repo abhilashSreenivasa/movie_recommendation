@@ -7,6 +7,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { FiRefreshCcw } from "react-icons/fi";
+import MainContext from '../context/MainContext'
 
 
 var rand = require('random-seed').create();
@@ -18,6 +19,7 @@ function Suggestion() {
     const [genre,setGenre]=useState("")
     const [movie,setMovie]=useState({})
 
+
  useEffect( ()=>{
     setGenre(28+"");
     async function getMovie(){
@@ -26,7 +28,9 @@ function Suggestion() {
 
         if(obj){
             const movies=obj.data.results;
+            
             setMovie(movies[Math.floor(rand(movies.length))]);
+   
             
         }
     }
@@ -43,8 +47,10 @@ function Suggestion() {
 
  },[])
 
- const handleChange = async (event) => {
 
+
+ const handleChange = async (event) => {
+    
     setGenre(event.target.value+"");
     const gid=event.target.value;
     async function getMovie(){
@@ -52,8 +58,10 @@ function Suggestion() {
         const obj=await axios.get( `https://api.themoviedb.org/3/discover/movie?api_key=${APIKEY}&with_genres=${gid}&page=${pageNo}`)
 
         if(obj){
+            
             const movies=obj.data.results;
             setMovie(movies[Math.floor(rand(movies.length))]);
+       
             
         }
     }
@@ -61,26 +69,28 @@ function Suggestion() {
     
     //console.log(movie)
   };
-  console.log(movie)
 const handleClick= async (movie)=>{
 
 }
 
 const reloadMovie=async()=>{
-    
     async function getMovie(){
         const pageNo=rand(3)+1;
         const obj=await axios.get( `https://api.themoviedb.org/3/discover/movie?api_key=${APIKEY}&with_genres=${genre}&page=${pageNo}`)
 
         if(obj){
             const movies=obj.data.results;
+            
             setMovie(movies[Math.floor(rand(movies.length))]);
+            
             
         }
     }
     getMovie()
     
 }
+
+
   return (
     <>
         <NavBarIn/>
@@ -116,7 +126,9 @@ const reloadMovie=async()=>{
         {movie &&<div className='movie-rating'><span className='movie-text'>Ratings:</span> {movie.vote_average}</div>}
         {movie && <FiRefreshCcw className='movie-reload-btn' size={30} onClick={()=>{
             reloadMovie();
-        }}/>}
+        }}/>
+
+        }
         </div>
      </div>}
      </div>
