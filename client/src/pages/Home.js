@@ -39,7 +39,7 @@ useEffect(()=>{
     <>
     <NavBarIn/>
     
-    <div>
+    <div class="trending-items">
         <Row title="Trending Now" fetchUrl={requests.trending}/>
         <Row title="Action Movies" fetchUrl={requests.actionMovies}/>
         <Row title="Comedy Movies" fetchUrl={requests.comedyMovies}/>

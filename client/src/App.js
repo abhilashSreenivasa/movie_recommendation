@@ -5,9 +5,8 @@ import Register from './pages/Register'
 import Home from './pages/Home'
 import about from './pages/about'
 import Suggestion from './pages/Suggestion'
+import SearchMovie from './pages/SearchMovie'
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-
 import './index.css'
 import { MainContextProvider } from './context/MainContext'
 import { ThemeProvider,createTheme } from "@mui/material";
@@ -33,6 +32,7 @@ function App() {
          <MainContextProvider>
            <Route path="/home" exact component={Home}/>
            <Route path="/suggestion" exact component={Suggestion}/>
+           <Route path="/search" exact component={SearchMovie}/>
            <Route path="/about" exact component={about}/>
          <Redirect from="*" to="/login" />
 
