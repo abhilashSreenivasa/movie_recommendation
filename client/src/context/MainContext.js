@@ -3,12 +3,17 @@ const MainContext= createContext();
 
 export const MainContextProvider=({children})=>{
     const [userState,setUserState]=useState({})
-
+    const [favourites,setFavourites]=useState([])
+    const [watchLater,setWatchLater]=useState([])
     return <MainContext.Provider value={
         {
             userState,
-            setUserState,       
-          
+            setUserState,
+            favourites,
+            setFavourites,
+            watchLater,
+            setWatchLater
+
         }
     }>
         {children}

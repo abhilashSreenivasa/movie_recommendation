@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import about from './pages/about'
 import Suggestion from './pages/Suggestion'
 import SearchMovie from './pages/SearchMovie'
+import Favourites from './pages/Favourites'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css'
 import { MainContextProvider } from './context/MainContext'
@@ -33,6 +34,7 @@ function App() {
            <Route path="/home" exact component={Home}/>
            <Route path="/suggestion" exact component={Suggestion}/>
            <Route path="/search" exact component={SearchMovie}/>
+           <Route path="/favourites" exact component={Favourites}/>
            <Route path="/about" exact component={about}/>
          <Redirect from="*" to="/login" />
 

@@ -7,6 +7,7 @@ const User = new mongoose.Schema(
 		password: { type: String, required: true },
 		favourites:[
 			{
+				mid:{type:Number,unique:true},
 				title:{type:String, default:""},
 				desc:{type:String, default:""},
 				date:{type:String, default:""},
@@ -17,6 +18,7 @@ const User = new mongoose.Schema(
 		],
 		watchLater:[
 			{
+				
 				title:{type:String, default:""},
 				desc:{type:String, default:""},
 				date:{type:String, default:""},

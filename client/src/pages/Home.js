@@ -9,9 +9,7 @@ import requests from '../requests'
 
 function Home() {
     const history=useHistory()	
-    const {userState,setUserState}=useContext(MainContext)
-    
-
+    const {setUserState}=useContext(MainContext)
 useEffect( ()=>{
     const token=localStorage.getItem('token')
     if(token){
@@ -31,15 +29,16 @@ useEffect( ()=>{
 
 },[]);
 
-useEffect(()=>{
-})
+
+
+
 
 
   return (
     <>
     <NavBarIn/>
     
-    <div class="trending-items">
+    <div className="trending-items">
         <Row title="Trending Now" fetchUrl={requests.trending}/>
         <Row title="Action Movies" fetchUrl={requests.actionMovies}/>
         <Row title="Comedy Movies" fetchUrl={requests.comedyMovies}/>
