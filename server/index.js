@@ -107,40 +107,7 @@ app.post('/api/add/:uname',verifyjwt, async (req,res)=>{
 })
 
 
-app.post('/api/update/:uname/:id',verifyjwt,async (req,res)=>{
-    const newInvent= await User.find({name:req.params.uname})
-    
-    const inventId=newInvent[0].inventory.filter(obj=>{
-        return obj._id.equals(mongoose.Types.ObjectId(req.params.id.toString()))
-    })
-    console.log(inventId)
-   try{
-    User.findOneAndUpdate(
-        { _id: newInvent[0]._id.toString(),'inventory._id': inventId[0]._id }, 
-        { $set: {
-            'inventory.$.inventory_name':req.body.name,
-            'inventory.$.desc':req.body.desc,
-            'inventory.$.date':new Date(req.body.date),
-            'inventory.$.approx_val':parseInt(req.body.val),
-            'inventory.$.insurance_val':parseInt(req.body.ival),
-            'inventory.$.photo':req.body.photo,
-         } },
-       async function (error, success) {
-             if (error) {
-                 console.log(error)
-                 res.status(500);
-             } else {
-                const user=await User.find({name: req.params.uname.toString()})
-                res.status(201).json({inventory:user[0].inventory}) 
-                 
-             }
-         });
-        }
-        catch(err){
-            console.log(err)
-        }
-     
-})
+
 
 app.post('/api/delete/:uname/:id',verifyjwt, async(req,res)=>{
     console.log("params"+req.params.uname +" "+req.params.id);

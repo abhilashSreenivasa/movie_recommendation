@@ -22,7 +22,7 @@ function NavBarIn() {
           <Nav className="me-auto">
             <Nav.Link as={Link} to="/home" >home</Nav.Link>
             <Nav.Link as={Link} to="/suggestion" >suggestion</Nav.Link>
-            <Nav.Link as={Link} to="/top250" >top 250</Nav.Link>
+            <Nav.Link as={Link} to="/search" >search</Nav.Link>
             <Nav.Link as={Link} to="/about" >About</Nav.Link>
 
             <Button variant="danger" onClick={()=>{
