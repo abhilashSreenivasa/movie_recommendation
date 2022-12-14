@@ -44,7 +44,7 @@ function SearchMovie() {
   const addFav=async (id)=>{
     const token = localStorage.getItem('token')  
 
-    const response = await fetch(`http://localhost:1337/api/add/${userState.name}/${id}`, {
+    const response = await fetch(`http://35.91.221.117:1337/api/add/${userState.name}/${id}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -61,7 +61,7 @@ function SearchMovie() {
       }),
     })
     async function getFavs(){
-      const obj=await axios.get( `http://localhost:1337/api/data/${userState.name}`)
+      const obj=await axios.get( `http://35.91.221.117:1337/api/data/${userState.name}`)
       if(obj){
           console.log(obj.data)
           const favs=obj.data.userInfo[0].favourites;

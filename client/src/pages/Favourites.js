@@ -20,7 +20,7 @@ function Favourites() {
 
     useEffect(()=>{
         async function getFavs(){
-            const obj=await axios.get( `http://localhost:1337/api/data/${userState.name}`)
+            const obj=await axios.get( `http://35.91.221.117:1337/api/data/${userState.name}`)
             if(obj){
                 console.log(obj.data)
                 const favs=obj.data.userInfo[0].favourites;
@@ -35,7 +35,7 @@ function Favourites() {
   const handleDelete=()=>{
     const token = localStorage.getItem('token')  
 
-        fetch(`http://localhost:1337/api/delete/${userState.name}/${mid}`,{
+        fetch(`http://35.91.221.117:1337/api/delete/${userState.name}/${mid}`,{
          method: 'POST',
          headers: {
          'Content-Type': 'application/json',

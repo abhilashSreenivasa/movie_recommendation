@@ -37,7 +37,7 @@ function Login() {
 
 async function loginUser(event) {
   event.preventDefault()
-  const response = await fetch('http://localhost:1337/api/login', {
+  const response = await fetch('http://35.91.221.117:1337/api/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
