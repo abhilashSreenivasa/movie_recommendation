@@ -7,7 +7,9 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { FiRefreshCcw } from "react-icons/fi";
-import MainContext from '../context/MainContext'
+import YouTube from 'react-youtube'
+import movieTrailer from 'movie-trailer'
+import { opts } from '../components/Row';
 
 
 var rand = require('random-seed').create();
@@ -18,6 +20,8 @@ function Suggestion() {
     const [genres, setGenres]=useState([])
     const [genre,setGenre]=useState("")
     const [movie,setMovie]=useState({})
+    const [trailerUrl,setTrailerUrl]=useState("")
+
 
 
  useEffect( ()=>{
@@ -58,7 +62,7 @@ function Suggestion() {
         const obj=await axios.get( `https://api.themoviedb.org/3/discover/movie?api_key=${APIKEY}&with_genres=${gid}&page=${pageNo}`)
 
         if(obj){
-            
+            setTrailerUrl("")
             const movies=obj.data.results;
             setMovie(movies[Math.floor(rand(movies.length))]);
        
@@ -69,8 +73,20 @@ function Suggestion() {
     
     //console.log(movie)
   };
-const handleClick= async (movie)=>{
+  const handleClick=(m)=>{
+       
+    if(trailerUrl && movie.id==m.id ){
+        setTrailerUrl("");   
+    }
+    else{
 
+        movieTrailer(null, {tmdbId:m.id})
+        .then((url)=>{
+            const urlParams= new URLSearchParams(new URL(url).search);
+             setTrailerUrl(urlParams.get("v"));
+            // setCurrentMovie(movie)
+        }).catch((e)=>alert('No trailer available for this video at the moment'))
+    }
 }
 
 const reloadMovie=async()=>{
@@ -79,6 +95,7 @@ const reloadMovie=async()=>{
         const obj=await axios.get( `https://api.themoviedb.org/3/discover/movie?api_key=${APIKEY}&with_genres=${genre}&page=${pageNo}`)
 
         if(obj){
+            setTrailerUrl("")
             const movies=obj.data.results;
             
             setMovie(movies[Math.floor(rand(movies.length))]);
@@ -130,7 +147,9 @@ const reloadMovie=async()=>{
 
         }
         </div>
+        
      </div>}
+     {trailerUrl && <YouTube videoId={trailerUrl} opts={opts}/>}
      </div>
     </>
     
