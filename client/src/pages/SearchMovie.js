@@ -83,10 +83,10 @@ function SearchMovie() {
             const obj=await axios.get( `https://api.themoviedb.org/3/search/movie?api_key=${APIKEY}&language=en-US&page=1&query=${str}`)
         
         if(obj){
-            console.log(obj)
             const movies=obj.data.results;
-            setMovies(movies);
+            setMovies(movies.filter((movie)=>movie.poster_path.length>0));
         }
+       
        
       
      }
@@ -112,7 +112,7 @@ function SearchMovie() {
       </div>
           {movies && <div className="search-results">
             {movies.map( (movie)=>
-            <img className="movie-posters" key={movie.id} alt={movie.title} width={150} height={200} src={baseURL+movie.poster_path} onClick={()=>handleClickOpen(movie)} />
+             <img className="movie-posters" key={movie.id} alt={movie.title} width={150} height={200} src={baseURL+movie.poster_path} onClick={()=>handleClickOpen(movie)} />
              )}
           </div>}
           <Dialog open={open} onClose={handleClose}>
@@ -130,7 +130,8 @@ function SearchMovie() {
           <Button disabled={isDisable} onClick={()=>addFav(1)}>Favourite</Button>
 
         </DialogActions>
-      </Dialog>  
+      </Dialog>
+    
     </>
 
   )

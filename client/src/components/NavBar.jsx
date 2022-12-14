@@ -13,7 +13,7 @@ function NavBar() {
      <Navbar style={{backgroundColor:'rgb(1, 15, 30)'}} variant="dark">
         <Container>
         <div className='camera-icon'><BsFillCameraReelsFill /> </div>
-        <Navbar.Brand href="#home"><div className='app-title'>WatchTime</div></Navbar.Brand> 
+        <Navbar.Brand href=""><div className='app-title'>WatchTime</div></Navbar.Brand> 
           <Nav className="me-auto">
             <Nav.Link as={Link} to="/login" >Login</Nav.Link>
             <Nav.Link as={Link} to="/register" >Register</Nav.Link>

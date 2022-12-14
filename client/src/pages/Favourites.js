@@ -76,11 +76,11 @@ function Favourites() {
 
      {favourites && <div className="search-results">
             {favourites.map( (movie)=>
-            <img className='movie-posters' key={movie.mid} width={150} height={200} src={movie.imageURL} onClick={()=>handleClickOpen(movie)} />
+             <img className='movie-posters' key={movie.mid} width={150} height={200} src={movie.imageURL} onClick={()=>handleClickOpen(movie)} />
              )}
           </div>}
           <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Subscribe</DialogTitle>
+        <DialogTitle>Favourites</DialogTitle>
         <DialogContent>
         <div className='card-movie-info'>
           <div className="movie-title">{title}</div>

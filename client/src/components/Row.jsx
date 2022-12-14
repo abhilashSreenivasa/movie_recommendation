@@ -4,6 +4,14 @@ import YouTube from 'react-youtube'
 import movieTrailer from 'movie-trailer'
 
 export const baseURL="https://image.tmdb.org/t/p/original";
+export const opts={
+    width:"100%",
+    height:"500",
+    playerVars:{
+        autoplay:1
+    }
+
+}
 
 function Row({title,fetchUrl}){
     const [movies,setMovies]=useState([]);
@@ -19,14 +27,7 @@ function Row({title,fetchUrl}){
         }
         fetchMovies();
     },[fetchUrl])
-    const opts={
-        width:"100%",
-        height:"500",
-        playerVars:{
-            autoplay:1
-        }
-
-    }
+  
     const handleClick=(movie)=>{
        
         if(trailerUrl && currentMovie.id==movie.id ){
