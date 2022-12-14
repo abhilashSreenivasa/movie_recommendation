@@ -7,7 +7,7 @@ const User = new mongoose.Schema(
 		password: { type: String, required: true },
 		favourites:[
 			{
-				mid:{type:Number,unique:true},
+				mid:{type:Number},
 				title:{type:String, default:""},
 				desc:{type:String, default:""},
 				date:{type:String, default:""},
